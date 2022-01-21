@@ -14,8 +14,17 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.shortcuts import redirect
 from django.urls import include, path
-from quiz.views import QuizListApi, StartQuizApi, SubmitQuizApi, QuizDetailApi
+from .views import QuizListApi, StartQuizApi, SubmitQuizApi, QuizDetailApi
+
+
+def redirect_frontend_app(request):
+    new_port = '8080'
+    hostname = request.get_host().split(':')[0]
+    url = 'http://' + hostname + ':' + new_port + '/'
+    return redirect(url)
+
 
 quiz_patterns = [
     path('', QuizListApi.as_view(), name='list'),
@@ -25,6 +34,7 @@ quiz_patterns = [
 ]
 
 urlpatterns = [
+    path('', redirect_frontend_app),
     path('admin/', admin.site.urls),
-    path('quiz/', include((quiz_patterns, 'quiz')))
+    path('quiz/', include((quiz_patterns, 'quiz'))),
 ]

@@ -23,7 +23,7 @@ services:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: pass
       POSTGRES_HOST: db
-      DB_PORT: 8001
+      POSTGRES_PORT: 8001
     volumes:
       - .:/code
     ports:
@@ -31,15 +31,15 @@ services:
     depends_on:
       - db
 
-#  vue:
-#    build:
-#      context: ./frontend
-#      dockerfile: docker/FrontendDockerfile
-#    container_name: ss-quiz-frontend
-#    command: ./docker/frontend_setup.sh
-#    volumes:
-#      - .:/app
-#    ports:
-#      - "8002:8080"
-#    depends_on:
-#      - django
+
+ vue:
+    build:
+      context: .
+      dockerfile: ./docker/FrontendDockerfile
+    container_name: ss-quiz-frontend
+    volumes:
+      - ./frontend:/app
+    ports:
+      - "8002:8080"
+    depends_on:
+      - django

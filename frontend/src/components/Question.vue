@@ -19,14 +19,6 @@
 export default {
   name: "Question",
   props: ['question'],
-
-  mounted() {
-    console.log('mounted', this.question)
-  },
-
-  methods: {
-
-  }
 }
 </script>
 

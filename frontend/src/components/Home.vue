@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-
     <div class="features">
       <br>
       <h2>Выберите тест</h2>
@@ -30,7 +29,6 @@ export default {
     refreshData(){
       axios.get('/quiz/')
       .then((response)=>{
-        console.log(response.data);
         this.quizes = response.data;
       })
     },

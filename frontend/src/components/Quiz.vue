@@ -57,7 +57,6 @@ export default {
 
   mounted: function () {
     this.refreshData();
-    console.log(this.hasResult)
   },
 
   computed: {
@@ -113,7 +112,6 @@ export default {
           .then(resp => {
             this.curQuestion = null;
             this.testResult = resp.data.result;
-            console.log(this.testResult, this.hasResult)
           })
     }
   }

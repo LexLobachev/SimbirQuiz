@@ -1,4 +1,4 @@
-#!/bin/shg
+#!/bin/sh
 
 python manage.py migrate
 python manage.py seed

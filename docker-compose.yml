@@ -31,14 +31,11 @@ services:
     depends_on:
       - db
 
-
- vue:
+  vue:
     build:
       context: .
       dockerfile: ./docker/FrontendDockerfile
     container_name: ss-quiz-frontend
-    volumes:
-      - ./frontend:/app
     ports:
       - "8080:8080"
     depends_on:
